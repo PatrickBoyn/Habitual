@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Habitual.Data;
+using Habitual.DTOs;
 using Habitual.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -18,20 +19,20 @@ namespace Habitual.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(string username, string password)
+        public async Task<IActionResult> Register(RegisterUserDto registerUserDto)
         {
             //TODO validate request
-            username = username.ToLower();
+            registerUserDto.Username = registerUserDto.Username.ToLower();
 
-            if (await _repo.UserExists(username))
+            if (await _repo.UserExists(registerUserDto.Username))
                 return BadRequest("Username already exists.");
 
             var createUser = new User
             {
-                Username = username
+                Username = registerUserDto.Username
             };
 
-            var userAfterCreation = await _repo.Register(createUser, password);
+            var userAfterCreation = await _repo.Register(createUser, registerUserDto.Password);
 
             return StatusCode(201);
         }
