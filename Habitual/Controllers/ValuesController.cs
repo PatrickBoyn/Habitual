@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Habitual.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Habitual.Controllers
 {
-    [Route("api/[controller]"), ApiController]
+    [Route("api/[controller]"), ApiController,Authorize]
     public class ValuesController : ControllerBase
     {
         private readonly HabitContext _context;
