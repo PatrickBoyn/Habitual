@@ -21,7 +21,7 @@ namespace Habitual.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterUserDto registerUserDto)
         {
-            //TODO validate request
+            
             registerUserDto.Username = registerUserDto.Username.ToLower();
 
             if (await _repo.UserExists(registerUserDto.Username))
