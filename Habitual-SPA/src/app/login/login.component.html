@@ -1,7 +1,7 @@
 <div>
-  <form>
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="password">
+  <form #loginForm="ngForm" (ngSubmit)="login()">
+    <input type="text" placeholder="Username" name="username" required [(ngModel)]="model.username">
+    <input type="password" placeholder="password" name="password" required [(ngModel)]="model.password">
     <button type="submit">Login</button>
   </form>
 </div>
