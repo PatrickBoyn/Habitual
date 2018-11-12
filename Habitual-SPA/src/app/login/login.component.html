@@ -1,7 +1,9 @@
 <div>
-  <form #loginForm="ngForm" (ngSubmit)="login()">
+  <h2 *ngIf="loggedIn()">Welcome {{model.username}}</h2>
+  <form *ngIf="!loggedIn()" #loginForm="ngForm" (ngSubmit)="login()">
     <input type="text" placeholder="Username" name="username" required [(ngModel)]="model.username">
     <input type="password" placeholder="password" name="password" required [(ngModel)]="model.password">
     <button type="submit">Login</button>
   </form>
+  <button *ngIf="loggedIn()" type="submit" (click)="logout()">Logout</button>
 </div>
