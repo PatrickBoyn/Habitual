@@ -1,4 +1,6 @@
-<h2>Values from the Database</h2>
-<ul *ngFor="let value of values">
-  <li>Values: {{value.name}}</li>
-</ul>
+<div *ngIf="login()">
+  <h2>Values from the Database</h2>
+  <ul *ngFor="let value of values">
+    <li>Values: {{value.name}}</li>
+  </ul>
+</div>

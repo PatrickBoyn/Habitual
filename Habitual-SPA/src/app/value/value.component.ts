@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import { AuthService } from "../_services/auth.service";
 
 @Component({
   selector: 'app-value',
@@ -7,8 +8,10 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./value.component.css']
 })
 export class ValueComponent implements OnInit {
-  values: object;
-  constructor(private http: HttpClient) { }
+  values: any;
+  model: any = {};
+
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit() {
     this.getValues();
@@ -21,4 +24,6 @@ export class ValueComponent implements OnInit {
       console.log(error);
     });
   }
+
 }
+
